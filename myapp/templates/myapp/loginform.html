@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <div class="form-container">
+        <div class="right-container">
+            <div class="right-inner-container">
+                <form method="post" action="{% url 'loginform' %}">
+                    {% csrf_token %}
+                    <h2 class="lg-view">Login</h2>
+                    <p>* Required</p>
+                    <input type="text" placeholder="Username *" name="username" required/>
+                    <input type="password" placeholder="Password *" name="password" required/>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+        
+.container {
+    margin-top: 20px; /* Add margin at the top */
+    margin-bottom: 20px; /* Add margin at the bottom */
+}
+.form-container {
+    display: flex;
+}
+
+.right-container {
+    flex-grow: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-inner-container {
+    text-align: center;
+}
+
+form {
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #1e90ff;
+}
+a.google-btn {
+    display: inline-block;
+    padding: 7px;
+    background-color: #ffffff; 
+    color: #000000;
+   
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    border: 1px solid rgb(49, 48, 48);
+}
+
+a.google-btn:hover {
+    background-color: #c0c3c8;
+}
+
+a.google-btn img {
+    margin-right: 10px; 
+    height: 30px;
+}
+</style>
+{% endblock %}
