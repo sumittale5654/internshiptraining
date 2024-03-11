@@ -1,0 +1,1 @@
+web: gunicorn trainingIntership.wsgi --log-file -
