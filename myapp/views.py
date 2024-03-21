@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import UserProfile
 from django.contrib.auth import authenticate, login
+from myapp.models import BlogPost
 
 # Create your views here.
 def signupform(request):
@@ -82,3 +83,54 @@ def patient_dashboard(request):
         # Handle the case where the user profile does not exist
         user_profile = None
     return render(request,'myapp/patient_dashboard.html',{'user_profile': user_profile})
+
+def blog_form(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        image = request.FILES.get('image')
+        category = request.POST.get('category')
+        summary = request.POST.get('summary')
+        content = request.POST.get('content')
+        
+        blog_obj = BlogPost(
+            title=title,
+            image=image,
+            category=category,
+            summary=summary,
+            content=content
+        )
+        blog_obj.save()
+        return redirect('blog_list')
+    return render(request,'myapp/blog_form.html')
+
+def blog_detail(request, id):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        e = request.FILES.get('image')
+        category = request.POST.get('category')
+        summary = request.POST.get('summary')
+        content = request.POST.get('content')
+    
+        blog_detail = BlogPost.objects.get(pk=title)
+        blog_detail.title = title,
+        blog_detail.image=image,
+        blog_detail.category=category,
+        blog_detail.summary=summary,
+        blog_detail.content=content,
+        blog_detail.save()
+    add_post = get_object_or_404(BlogPost, pk=id)
+    context={
+        'add_post':add_post,
+    }
+        
+    return render(request, 'myapp/blog_detail.html',context)
+
+def blog_list(request):
+    blogs = BlogPost.objects.all()
+    context ={
+        'blogs':blogs,
+    }
+    return render(request,'myapp/blog_list.html',context)
+
+
+

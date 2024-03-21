@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2>Create New Blog Post</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="image">Image:</label><br>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+        
+        <label for="category">Category:</label><br>
+        <select id="category" name="category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Mental Health">Mental Health</option>
+            <option value="Heart Health">Heart Health</option>
+            <option value="COVID-19">COVID-19</option>
+            <option value="Immunization">Immunization</option>
+        </select><br><br>
+        
+        <label for="summary">Summary:</label><br>
+        <textarea id="summary" name="summary" rows="4" cols="50" required></textarea><br><br>
+        
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+<style>
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        margin-top: 0;
+        color: #333;
+    }
+    label {
+        font-weight: bold;
+        color: #333;
+    }
+    input[type="text"],
+    input[type="file"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    textarea {
+        height: 150px;
+    }
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+{% endblock %}

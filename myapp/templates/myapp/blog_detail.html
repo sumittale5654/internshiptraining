@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="col-lg-12 mb-5">
+    <div class="single-blog-item">
+        <img src="{{ MEDIA_URL }}{{ add_post.image.url }}" alt="" class="img-fluid" />
+        <div class="blog-item-content mt-5">
+            <div class="blog-item-meta mb-3">
+                <span class="text-color-2 text-capitalize mr-3"><i
+                        class="icofont-book-mark mr-2"></i> Category:{{add_post.category}}</span>
+            </div>
+            <h2 class="mb-4 text-md">
+                <a href="">{{add_post.title}}</a>
+            </h2>
+            <h4>Summary</h4>
+            <p class="lead mb-4" style="color: #444;">
+                {{add_post.summary}}
+            </p>
+            <h4>Content</h4>
+            <p style="color: #444;">
+                {{add_post.content}}
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .col-lg-12 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .single-blog-item {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .single-blog-item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .blog-item-meta {
+        font-size: 14px;
+        color: #777777;
+    }
+
+    .blog-item-meta span {
+        margin-right: 10px;
+    }
+
+    .blog-item-content h2 a {
+        color: #333333;
+        text-decoration: none;
+    }
+
+    .lead {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #444444;
+    }
+
+    .quote {
+        font-style: italic;
+        color: #777777;
+    }
+
+    .tag-option li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .tag-option li a {
+        color: #777777;
+        text-decoration: none;
+    }
+
+    .tag-option li a:hover {
+        color: #333333;
+    }
+
+    .list-inline {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .list-inline-item {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .list-inline-item a {
+        color: #777777;
+        text-decoration: none;
+    }
+
+    .list-inline-item a:hover {
+        color: #333333;
+    }
+
+</style>
+{% endblock %}
